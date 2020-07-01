@@ -1,0 +1,36 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: mysql2
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  charset: utf8mb4
+  encoding: utf8mb4
+  collation: utf8mb4_general_ci
+
+local: &local
+  socket: /var/run/mysqld/mysqlx.sock
+  port: <%= ENV['DB_PORT'] %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+
+development:
+  <<: *default
+  <<: *local
+  database: rails_nextjs_demo_backend_development
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  <<: *local
+  database: rails_nextjs_demo_backend_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>

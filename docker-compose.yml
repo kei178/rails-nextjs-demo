@@ -1,0 +1,40 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3307:3306'
+
+  backend:
+    build:
+      context: rails-nextjs-demo-backend
+      args:
+        UID: ${UID:-1001}
+    volumes:
+      - ./rails-nextjs-demo-backend:/usr/src/app
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    tty: true
+    user: rails
+    environment:
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_PORT: 3306
+      DB_HOST: db
+      RAILS_MAX_THREADS: 5
+      RAILS_ENV: development
+
+  frontend:
+    build:
+      context: rails-nextjs-demo-frontend
+      args:
+        UID: ${UID:-1001}
+    volumes:
+      - ./rails-nextjs-demo-frontend:/usr/src/app
+    ports:
+      - '3000:3000'
+    user: frontend
