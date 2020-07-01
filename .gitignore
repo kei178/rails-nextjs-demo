@@ -58,3 +58,5 @@ rails-nextjs-demo-backend/storage/*
 
 # Ignore master key for decrypting credentials and more.
 rails-nextjs-demo-backend/config/master.key
+
+rails-nextjs-demo-backend/vendor/bundle
