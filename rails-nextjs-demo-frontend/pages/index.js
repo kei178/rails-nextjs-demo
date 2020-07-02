@@ -23,6 +23,7 @@ const Home = ({ examples, statusCode }) => {
       <style jsx>{`
         .examples-list {
           list-style-type: none;
+          padding-left: 0;
         }
       `}</style>
     </div>
