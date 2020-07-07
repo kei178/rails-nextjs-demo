@@ -15,14 +15,13 @@ services:
   backend:
     build:
       context: rails-nextjs-demo-backend
-      # args:
-      #   UID: ${UID:-1001}
     volumes:
       - ./rails-nextjs-demo-backend:/usr/src/app
     ports:
       - '8080:8080'
     depends_on:
       - db
+    stdin_open: true
     tty: true
     # user: rails
     environment:
