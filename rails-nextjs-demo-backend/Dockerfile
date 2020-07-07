@@ -1,14 +1,18 @@
 FROM ruby:2.6.4
 
-ARG UID
-RUN adduser rails --uid $UID --disabled-password --gecos ""
+RUN apt-get update
+RUN apt-get install -y vim
+
+# FIXME: docker-sync with specifying UID causes permission error
+# ARG UID
+# RUN adduser rails --uid $UID --disabled-password --gecos ""
 
 ENV APP /usr/src/app
 RUN mkdir $APP
 WORKDIR $APP
 
 COPY Gemfile* $APP/
-RUN bundle install -j3 --path vendor/bundle
+RUN bundle install -j3 --path vendor/bundle 
 
 COPY . $APP/
 
