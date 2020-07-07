@@ -32,7 +32,7 @@ const Home = ({ examples, statusCode }) => {
 
 Home.getInitialProps = async (_context) => {
   try {
-    const response = await axios.get('http://backend:8080/api/examples');
+    const response = await axios.get('http://localhost:8080/api/examples');
 
     return {
       examples: response.data,
