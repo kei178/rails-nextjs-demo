@@ -1,0 +1,10 @@
+version: '3'
+
+volumes:
+  backend-sync-volume:
+    external: true
+
+services:
+  backend:
+    volumes:
+      - backend-sync-volume:/usr/src/app

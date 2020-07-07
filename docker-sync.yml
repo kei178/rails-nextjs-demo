@@ -1,0 +1,9 @@
+version: '2'
+
+syncs:
+  backend-sync-volume:
+    src: './rails-nextjs-demo-backend'
+    sync_strategy: 'unison'
+    sync_excludes: ['.idea', '.git', 'tmp', '.DS_Store', '.gitignore']
+    sync_host_ip: '127.0.0.1'
+    sync_host_port: 10872
