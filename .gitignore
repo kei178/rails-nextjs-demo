@@ -20,6 +20,7 @@ rails-nextjs-demo-frontend/build
 
 # misc
 .DS_Store
+.idea
 
 # debug
 npm-debug.log*
