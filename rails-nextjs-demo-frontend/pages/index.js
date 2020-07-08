@@ -1,6 +1,8 @@
 import axios from 'axios';
+import cookies from 'nookies';
 import Error from 'next/error';
 import Example from '../components/Example';
+import { withAuthorization } from '../utils/withAuthorization';
 
 const Home = ({ examples, statusCode }) => {
   if (statusCode) {
@@ -30,9 +32,22 @@ const Home = ({ examples, statusCode }) => {
   );
 };
 
-Home.getInitialProps = async (_context) => {
+Home.getInitialProps = async (context) => {
   try {
-    const response = await axios.get('http://localhost:8080/api/examples');
+    const { token } = cookies.get(context);
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    };
+    // XXX backend url differs depending on calls from client or server sides
+    const base_url = context.req
+      ? 'http://backend:8080'
+      : 'http://localhost:8080';
+
+    const response = await axios.get(`${base_url}/api/examples`, {
+      params: {},
+      headers: headers,
+    });
 
     return {
       examples: response.data,
@@ -44,4 +59,4 @@ Home.getInitialProps = async (_context) => {
   }
 };
 
-export default Home;
+export default withAuthorization(Home);

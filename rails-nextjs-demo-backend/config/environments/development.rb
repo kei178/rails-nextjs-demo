@@ -54,4 +54,6 @@ Rails.application.configure do
 
   # Hostname
   config.hosts << "localhost"
+  config.hosts << "127.0.0.1"
+  config.hosts << "backend"
 end
