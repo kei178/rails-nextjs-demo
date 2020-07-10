@@ -1,8 +1,5 @@
 FROM node:12
 
-# ARG UID
-# RUN adduser frontend --uid $UID --disabled-password --gecos ""
-
 ENV APP /usr/src/app
 RUN mkdir $APP
 WORKDIR $APP

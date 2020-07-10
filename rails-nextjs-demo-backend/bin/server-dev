@@ -8,7 +8,7 @@
 # echo "MySQL is up and running!"
 
 # If the database exists, migrate. Otherwise setup (create and migrate)
-bundle exec rails db:migrate 2>/dev/null || bundle exec rails db:create db:migrate
+bundle exec rails db:migrate 2>/dev/null || bundle exec rails db:create db:migrate db:seed
 
 # If the container has been killed, there may be a stale pid file
 # preventing rails from booting up

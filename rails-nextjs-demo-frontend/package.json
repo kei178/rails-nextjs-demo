@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
-    "start": "next start"
+    "start": "next start --hostname 0.0.0.0"
   },
   "dependencies": {
     "axios": "^0.19.2",
