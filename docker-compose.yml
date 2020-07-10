@@ -17,8 +17,8 @@ services:
       context: rails-nextjs-demo-backend
     volumes:
       - ./rails-nextjs-demo-backend:/usr/src/app
-    ports:
-      - '8080:8080'
+    # ports:
+    #   - '8080:8080'
     depends_on:
       - db
     stdin_open: true
@@ -35,10 +35,20 @@ services:
   frontend:
     build:
       context: rails-nextjs-demo-frontend
-      args:
-        UID: ${UID:-1001}
+      # args:
+      #   UID: ${UID:-1001}
     volumes:
       - ./rails-nextjs-demo-frontend:/usr/src/app
+    # ports:
+    #   - '3000:3000'
+    # user: frontend
+
+  nginx:
+    restart: always
+    build:
+      context: nginx
     ports:
-      - '3000:3000'
-    user: frontend
+      - '80:80'
+    links:
+      - frontend:frontend
+      - backend:backend

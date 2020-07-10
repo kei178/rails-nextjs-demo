@@ -41,10 +41,10 @@ Home.getInitialProps = async (context) => {
     };
     // XXX backend url differs depending on calls from client or server sides
     const base_url = context.req
-      ? 'http://backend:8080'
-      : 'http://localhost:8080';
+      ? 'http://backend:8080/api'
+      : process.env.NEXT_PUBLIC_BACKEND_URL;
 
-    const response = await axios.get(`${base_url}/api/examples`, {
+    const response = await axios.get(`${base_url}/examples`, {
       params: {},
       headers: headers,
     });
