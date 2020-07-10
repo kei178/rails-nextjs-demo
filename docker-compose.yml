@@ -39,6 +39,9 @@ services:
     restart: always
     build:
       context: nginx
+    environment:
+      SERVER_HOST: localhost
+      PORT: 80
     ports:
       - '80:80'
     links:
