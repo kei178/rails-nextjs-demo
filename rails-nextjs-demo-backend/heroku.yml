@@ -1,0 +1,11 @@
+build:
+  docker:
+    web: Dockerfile
+
+release:
+  image: web
+  command:
+    - bundle exec rails db:migrate 2>/dev/null || bundle exec rails db:create db:migrate db:seed
+
+run:
+  web: bundle exec rails s -p $PORT
