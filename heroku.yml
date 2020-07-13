@@ -9,11 +9,6 @@ build:
 #   command:
 #     - bundle exec rails db:migrate 2>/dev/null || bundle exec rails db:create db:migrate db:seed
 
-release:
-  image: web
-  command:
-    - docker network connect web frontend
-
 run:
   backend: bundle exec rails s -p 8080 -b '0.0.0.0'
   frontend: yarn build && yarn start -p 3000
