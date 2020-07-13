@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ['localhost', '127.0.0.1']
+    origins ['localhost', '127.0.0.1', 'rails-nextjs-demo-front.vercel.app']
 
     resource '*',
       headers: :any,
