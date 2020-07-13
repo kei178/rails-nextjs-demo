@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:1.18.0
 
 # Copy Nginx config template
 COPY ./default.conf /tmp/docker.nginx
