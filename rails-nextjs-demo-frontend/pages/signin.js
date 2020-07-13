@@ -29,7 +29,7 @@ const Signin = () => {
     try {
       const headers = { 'Content-Type': 'application/json' };
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/sign_in`,
+        `${process.env.NEXT_PUBLIC_API_URL}/users/sign_in`,
         { user: { ...signinInfo } },
         { headers: headers }
       );

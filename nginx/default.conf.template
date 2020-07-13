@@ -2,9 +2,9 @@ upstream frontend {
   server frontend:3000;
 }
 
-# upstream backend {
-#   server backend:8080;
-# }
+upstream backend {
+  server backend:8080;
+}
 
 server {
   listen $PORT default_server;

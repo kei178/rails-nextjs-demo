@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import cookies from 'nookies';
 import { isAuthenticated } from '../../utils/withAuthorization';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
   const handleSignout = () => {
@@ -11,11 +12,9 @@ const Header = () => {
     <div className="header">
       <p>Rails + Next.js Demo App</p>
       {isAuthenticated() && (
-        <p>
-          <Link href="/signin" as="/signin">
-            <a onClick={handleSignout}>Sign out</a>
-          </Link>
-        </p>
+        <Link href="/signin" as="/signin">
+          <a onClick={handleSignout}>Sign out</a>
+        </Link>
       )}
       <style jsx>{`
         .header {

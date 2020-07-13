@@ -17,6 +17,8 @@ services:
       context: rails-nextjs-demo-backend
     volumes:
       - ./rails-nextjs-demo-backend:/usr/src/app
+    ports:
+      - '8080:8080'
     depends_on:
       - db
     stdin_open: true
@@ -34,6 +36,8 @@ services:
       context: rails-nextjs-demo-frontend
     volumes:
       - ./rails-nextjs-demo-frontend:/usr/src/app
+    ports:
+      - '3000:3000'
 
   nginx:
     restart: always
