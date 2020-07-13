@@ -2,7 +2,7 @@ build:
   docker:
     backend: ./rails-nextjs-demo-backend/Dockerfile
     frontend: ./rails-nextjs-demo-frontend/Dockerfile
-    nginx: ./nginx/Dockerfile
+    web: ./nginx/Dockerfile
 
 # release:
 #   image: backend
